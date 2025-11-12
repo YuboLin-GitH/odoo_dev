@@ -28,6 +28,7 @@
               <field name="description"/>
               <field name="esIntriga"/>
               <field name="esInfantil"/>
+              <field name="peliculas_id"/>
             </group>
           </sheet>
         </form>

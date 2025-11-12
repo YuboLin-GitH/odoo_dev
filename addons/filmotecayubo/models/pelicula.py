@@ -34,3 +34,5 @@ class pelicula(models.Model):
                                     default='cl',
                                     help="Seleccione la color la película")
   
+    genero_id=fields.Many2one("filmotecayubo.genero", string="Género", required=True, ondelete="cascade")
+    tecnicas_id= fields.Many2many("filmotecayubo.tecnica")
