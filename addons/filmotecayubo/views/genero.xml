@@ -1,0 +1,95 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="vista_filmotecayubo_genero_tree">
+      <field name="name">vista_filmotecayubo_genero_tree</field>
+      <field name="model">filmotecayubo.genero</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="description"/>
+          <field name="esIntriga"/>
+          <field name="esInfantil"/>
+        </tree>
+      </field>
+    </record>
+
+
+
+    <record model="ir.ui.view" id="vista_filmotecayubo_genero_form">
+      <field name="name">vista_filmotecayubo_genero_form</field>
+      <field name="model">filmotecayubo.genero</field>
+      <field name="arch" type="xml">
+        <form string="formulario_genero">
+          <sheet>
+            <group name="group_top">
+              <field name="name"/>
+              <field name="description"/>
+              <field name="esIntriga"/>
+              <field name="esInfantil"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+
+    <!-- actions opening views on models -->
+<!--
+    <record model="ir.actions.act_window" id="filmotecayubo.action_window">
+      <field name="name">filmotecayubo window</field>
+      <field name="res_model">filmotecayubo.filmotecayubo</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+-->
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="filmotecayubo.action_server">
+      <field name="name">filmotecayubo server</field>
+      <field name="model_id" ref="model_filmotecayubo_filmotecayubo"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+<record model="ir.actions.act_window" id="accion_filmotecayubo_genero_form">
+      <field name="name">Listado de genero</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">filmotecayubo.genero</field>
+      <field name="view_mode">tree,form</field>
+      <field name="help" type="html">
+        <p class="oe_view_nocontent_create">
+          genero
+        </p>
+        <p> Click <strong> 'Crear' </strong> para añadir nuevos generos
+         </p>
+      </field>
+    </record>
+
+
+
+    <!-- Menú raiz -->
+
+    <menuitem name="filmotecayubo" id="menu_filmotecayubo_raiz"/>
+
+    <!-- menu categories -->
+
+    <menuitem name="Listado de genero" id="menu_filmotecayubo_listado_genero" parent="menu_filmotecayubo_raiz"/>
+ 
+
+    <!-- actions -->
+
+    <menuitem name="Consultar" id="menu_filmotecayubo_genero" parent="menu_filmotecayubo_listado_genero"
+              action="accion_filmotecayubo_genero_form"/>
+   
+
+  </data>
+</odoo>

@@ -1,0 +1,107 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="vista_filmotecayubo_pelicula_tree">
+      <field name="name">vista_filmotecayubo_pelicula_tree</field>
+      <field name="model">filmotecayubo.pelicula</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="film_date"/>
+          <field name="description"/>
+          <field name="is_spanish"/>
+          <field name="imagen"/>
+          <field name="lenguage"/>
+          <field name="opinion"/>
+          <field name="color"/>
+        </tree>
+      </field>
+    </record>
+
+
+
+    <record model="ir.ui.view" id="vista_filmotecayubo_pelicula_form">
+      <field name="name">vista_filmotecayubo_pelicula_form</field>
+      <field name="model">filmotecayubo.pelicula</field>
+      <field name="arch" type="xml">
+        <form string="formulario_pelicula">
+          <sheet>
+            <group name="group_top">
+              <group name="group_left">
+                <field name="name"/>
+                <field name="description"/>
+                <field name="film_date"/>
+                <field name="is_spanish"/>
+              </group>
+              <group name="group_right">
+                  <field name="imagen"/>
+                 <field name="lenguage"/>
+                 <field name="opinion"/>
+                 <field name="color"/>
+              </group>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+
+    <!-- actions opening views on models -->
+<!--
+    <record model="ir.actions.act_window" id="filmotecayubo.action_window">
+      <field name="name">filmotecayubo window</field>
+      <field name="res_model">filmotecayubo.filmotecayubo</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+-->
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="filmotecayubo.action_server">
+      <field name="name">filmotecayubo server</field>
+      <field name="model_id" ref="model_filmotecayubo_filmotecayubo"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+<record model="ir.actions.act_window" id="accion_filmotecayubo_pelicula_form">
+      <field name="name">Listado de películas</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">filmotecayubo.pelicula</field>
+      <field name="view_mode">tree,form</field>
+      <field name="help" type="html">
+        <p class="oe_view_nocontent_create">
+          Películas
+        </p>
+        <p> Click <strong> 'Crear' </strong> para añadir nuevos elementos
+         </p>
+      </field>
+    </record>
+
+
+
+    <!-- Menú raiz -->
+
+    <menuitem name="filmotecayubo" id="menu_filmotecayubo_raiz"/>
+
+    <!-- menu categories -->
+
+    <menuitem name="Listado de películas" id="menu_filmotecayubo_listado_peliculas" parent="menu_filmotecayubo_raiz"/>
+ 
+
+    <!-- actions -->
+
+    <menuitem name="Consultar" id="menu_filmotecayubo_peliculas" parent="menu_filmotecayubo_listado_peliculas"
+              action="accion_filmotecayubo_pelicula_form"/>
+   
+
+  </data>
+</odoo>
