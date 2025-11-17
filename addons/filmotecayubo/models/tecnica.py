@@ -13,4 +13,8 @@ class tecnica(models.Model):
     photo = fields.Binary(string="Imagen")
 
 
-    
+    peliculas_id= fields.Many2many(comodel_name ="filmotecayubo.pelicula",
+                                  relation = "tecnicas_peliculas",
+                                  columna1 = "tecnica_id",
+                                  columna2 = "pelicula_id",
+                                  string = "Películas")

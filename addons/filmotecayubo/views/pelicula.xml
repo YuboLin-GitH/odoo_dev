@@ -27,8 +27,12 @@
       <field name="arch" type="xml">
         <form string="formulario_pelicula">
           <sheet>
+          <div class="oe_button_box" name="button_box">
+            <button name="toggle_color" type="object" class="oe_stat_button" string="Pelicula Español" icon="fa-paint-brush"/>
+          </div>
             <group name="group_top">
               <group name="group_left">
+                <field name="code"/>
                 <field name="name"/>
                 <field name="description"/>
                 <field name="film_date"/>
@@ -37,7 +41,7 @@
                 <field name="tecnicas_id"/>
               </group>
               <group name="group_right">
-                  <field name="imagen"/>
+                  <field name="imagen" widget="imagen"/>
                  <field name="lenguage"/>
                  <field name="opinion"/>
                  <field name="color"/>

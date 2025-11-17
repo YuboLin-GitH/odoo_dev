@@ -8,6 +8,7 @@ class pelicula(models.Model):
     _description = 'filmotecayubo.pelicula'
 
 
+    code = fields.Char(string="Código", compute = "_get_code")
     name = fields.Char(string="Nombre", readonly = False, required=True, help="Introduzca el nombre")
     description = fields.Text()
     film_date = fields.Date()
@@ -35,4 +36,18 @@ class pelicula(models.Model):
                                     help="Seleccione la color la película")
   
     genero_id=fields.Many2one("filmotecayubo.genero", string="Género", required=True, ondelete="cascade")
-    tecnicas_id= fields.Many2many("filmotecayubo.tecnica")
+    tecnicas_id= fields.Many2many(comodel_name ="filmotecayubo.tecnica",
+                                  relation = "tecnica_peliculas",
+                                  columna1 = "pelicula_id",
+                                  columna2 = "tecnica_id",
+                                  string = "Técnicas")
+    
+    def _get_code(self):
+          for pelicula in self:
+               if len(pelicula.genero_id) == 0:
+                    pelicula.code = "FILM_"+str(pelicula.id)
+               else:
+                    pelicula.code = str(pelicula.genero_id.name).upper()+ "_"+str(pelicula.id)
+    
+    def toggle_color(self):
+         self.is_spanish = not self.is_spanish

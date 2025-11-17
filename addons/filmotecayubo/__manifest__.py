@@ -27,6 +27,7 @@ Long description of module's purpose
         'views/views.xml',
         'views/templates.xml',
         'views/genero.xml',
+        'views/tecnica.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
