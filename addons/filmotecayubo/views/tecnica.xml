@@ -1,0 +1,81 @@
+<odoo>
+  <data>
+ 
+
+
+      <record model="ir.ui.view" id="vista_filmotecayubo_tecnica_tree">
+      <field name="name">vista_filmotecayubo_tecnica_tree</field>
+      <field name="model">filmotecayubo.tecnica</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="description"/>
+          <field name="photo"/>
+        </tree>
+      </field>
+    </record>
+
+   <record model="ir.ui.view" id="vista_filmotecayubo_tecnica_form">
+      <field name="name">vista_filmotecayubo_tecnica_form</field>
+      <field name="model">filmotecayubo.tecnica</field>
+      <field name="arch" type="xml">
+        <form string="formulario_tecnica">
+          <sheet>
+            <group name="group_top">
+                <field name="name"/>
+                <field name="description"/>
+                <field name="peliculas_id"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+
+
+
+    <record model="ir.actions.act_window" id="accion_filmotecayubo_tecnica_form">
+      <field name="name">Listado de tecnicas de rodaje</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">filmotecayubo.tecnica</field>
+      <field name="view_mode">tree,form</field>
+      <field name="help" type="html">
+        <p class="oe_view_nocontent_create">
+          Tecnicas
+        </p>
+        <p> Click <strong> 'Crear' </strong> para añadir nuevos elementos
+         </p>
+      </field>
+    </record>
+
+
+
+    <!-- menu categories -->
+
+    <menuitem name="Listado de técnicas de rodaje" id="menu_filmotecayubo_listado_tecnicas" parent="menu_filmotecayubo_raiz"/>
+ 
+
+    <!-- actions -->
+
+    <menuitem name="Consultar" id="menu_filmotecayubo_tecnicas" parent="menu_filmotecayubo_listado_tecnicas"
+              action="accion_filmotecayubo_tecnica_form"/>
+
+
+    <!-- Top menu item -->
+<!--
+    <menuitem name="filmotecayubo" id="filmotecayubo.menu_root"/>
+-->
+    <!-- menu categories -->
+<!--
+    <menuitem name="Menu 1" id="filmotecayubo.menu_1" parent="filmotecayubo.menu_root"/>
+    <menuitem name="Menu 2" id="filmotecayubo.menu_2" parent="filmotecayubo.menu_root"/>
+-->
+    <!-- actions -->
+<!--
+    <menuitem name="List" id="filmotecayubo.menu_1_list" parent="filmotecayubo.menu_1"
+              action="filmotecayubo.action_window"/>
+    <menuitem name="Server to list" id="filmotecayubo" parent="filmotecayubo.menu_2"
+              action="filmotecayubo.action_server"/>
+-->
+  </data>
+</odoo>

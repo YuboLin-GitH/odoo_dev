@@ -1,0 +1,67 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="vista_manageyubo_sprint_tree">
+      <field name="name">vista_manageyubo_sprint_tree</field>
+      <field name="model">manageyubo.sprint</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="description"/>
+          <field name="start_date"/>
+          <field name="end_date"/>
+        </tree>
+      </field>
+    </record>
+
+
+
+    <record model="ir.ui.view" id="vista_manageyubo_sprint_form">
+      <field name="name">vista_manageyubo_sprint_form</field>
+      <field name="model">manageyubo.sprint</field>
+      <field name="arch" type="xml">
+        <form string="formulario_sprint">
+          <sheet>
+            <group name="group_top">
+                <field name="name"/>
+                <field name="description"/>
+                <field name="start_date"/>
+                <field name="end_date"/>
+                <field name="project_id"/>
+                <field name="task_id"/>
+
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    
+
+
+<record model="ir.actions.act_window" id="accion_manageyubo_sprint_form">
+      <field name="name">Listado de Sprint</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">manageyubo.sprint</field>
+      <field name="view_mode">tree,form</field>
+      <field name="help" type="html">
+        <p class="oe_view_nocontent_create">
+          Sprint
+        </p>
+        <p> Click <strong> 'Crear' </strong> para añadir nuevos elementos
+         </p>
+      </field>
+</record>
+
+
+
+
+    <!-- actions -->
+
+    <menuitem name="Sprint" id="menu_manageyubo_sprint" parent="menu_manageyubo_management"
+              action="accion_manageyubo_sprint_form"/>
+   
+
+  </data>
+</odoo>

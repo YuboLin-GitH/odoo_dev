@@ -1,2 +1,4 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_filmotecayubo_pelicula,filmotecayubo.pelicula,model_filmotecayubo_pelicula,base.group_user,1,1,1,1
+access_filmotecayubo_genero,filmotecayubo.genero,model_filmotecayubo_genero,base.group_user,1,1,1,1
+access_filmotecayubo_tecnica,filmotecayubo.tecnica,model_filmotecayubo_tecnica,base.group_user,1,1,1,1

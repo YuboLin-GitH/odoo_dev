@@ -1,2 +1,6 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_manageyubo_manageyubo,manageyubo.manageyubo,model_manageyubo_manageyubo,base.group_user,1,1,1,1
+access_manageyubo_task,access.manageyubo.task,model_manageyubo_task,base.group_user,1,1,1,1
+access_manageyubo_history,access.manageyubo.history,model_manageyubo_history,base.group_user,1,1,1,1
+access_manageyubo_sprint,access.manageyubo.sprint,model_manageyubo_sprint,base.group_user,1,1,1,1
+access_manageyubo_project,access.manageyubo.project,model_manageyubo_project,base.group_user,1,1,1,1
+access_manageyubo_technology,access.manageyubo.technology,model_manageyubo_technology,base.group_user,1,1,1,1
