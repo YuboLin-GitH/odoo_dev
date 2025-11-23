@@ -1,0 +1,58 @@
+version: "3.8"
+services:
+
+  odoo:
+    image: odoo:17
+    container_name: odoo
+    restart: unless-stopped
+    links:
+      - db:db    
+    depends_on:
+      - db
+    ports:
+      - "8069:8069"
+    volumes:
+      - odoo-data:/var/lib/odoo
+      - ./config:/etc/odoo
+      - ./addons:/mnt/extra-addons
+    networks:
+      - red_odoo
+
+  db:
+    image: postgres:latest
+    container_name: container-postgresdb
+    restart: unless-stopped       
+    environment:
+      - DATABASE_HOST=127.0.0.1
+      - POSTGRES_DB=postgres
+      - POSTGRES_PASSWORD=odoo
+      - POSTGRES_USER=odoo
+      - PGDATA=/var/lib/postgresql/data/pgdata
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    networks:
+      - red_odoo
+    ports:
+      - "5432:5432"
+
+
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    depends_on:
+      - db
+    ports:
+      - "80:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: pgadmin4@pgadmin.org
+      PGADMIN_DEFAULT_PASSWORD: admin
+    restart: unless-stopped
+    networks:
+      - red_odoo
+
+volumes:
+  odoo-data:
+  db-data:
+
+networks:
+  red_odoo:   
+

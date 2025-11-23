@@ -1,0 +1,83 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+
+    <record model="ir.ui.view" id="vista_filmoteca_pelicula_tree">
+      <field name="name">vista_filmoteca_pelicula_tree</field>
+      <field name="model">filmotecayubo.pelicula</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="film_date"/>
+          <field name="description"/>
+        </tree>
+      </field>
+    </record>
+
+
+ <record model="ir.ui.view" id="vista_filmoteca_pelicula_form">
+      <field name="name">vista_filmoteca_pelicula_form</field>
+      <field name="model">filmotecayubo.pelicula</field>
+      <field name="arch" type="xml">
+        <form string="formulario_pelicula">
+          <sheet>
+            <group name="group_top">
+              <field name="name"/>
+              <field name="film_date"/>
+              <field name="description"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="accion_filmotecayubo_pelicula_form">
+      <field name="name">Listado de peliculas</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">filmotecayubo.pelicula</field>
+      <field name="view_mode">tree,form</field>
+      <field name="help" type="html">
+        <p class="oe_view_nocontent_create">
+          pelicula hahahaha
+        </p>
+        <p>
+          Click <strong>Create</strong> para añadir nuevos elementos.
+        </p>
+      </field>
+    </record>
+
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="filmotecayubo.action_server">
+      <field name="name">filmotecayubo server</field>
+      <field name="model_id" ref="model_filmotecayubo_filmotecayubo"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+
+    <menuitem name="Filmoteca de la yubo" id="menu_filmotecayubo_raiz"/>
+
+    <!-- menu categories -->
+
+    <menuitem name="Listado de películas" id="menu_filmotecayubo_listado_pelicula" parent="menu_filmotecayubo_raiz"/>
+
+    <!-- actions -->
+
+    <menuitem name="Consultar" id="menu_filmotecayubo_peliculas" parent="menu_filmotecayubo_listado_pelicula"
+              action="accion_filmotecayubo_pelicula_form"/>
+
+  </data>
+</odoo>
