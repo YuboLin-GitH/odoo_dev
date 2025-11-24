@@ -17,6 +17,7 @@
           <field name="color"/>
           <button name="f_create" string="Crear" class="oe_hightlight" type="object"/>
           <button name="f_search_update" string="Buscar/Editar" class="oe_hightlight" type="object"/>
+          <button name="f_delete" string="Eliminar" class="oe_hightlight" type="object"/>
         </tree>
       </field>
     </record>

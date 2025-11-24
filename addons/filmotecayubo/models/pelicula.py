@@ -65,5 +65,9 @@ class pelicula(models.Model):
                self.env['filmotecayubo.pelicula'].create(pelicula)
      
     def f_search_update(self):
-          pelicula = self.env['filmotecayubo.pelicula'].search([('name', '=', 'asdas')])
+          pelicula = self.env['filmotecayubo.pelicula'].search([('name', '=', 'Star Wars')])
           print('search()', pelicula, pelicula.name)
+
+    def f_delete(self):
+          pelicula = self.env['filmotecayubo.pelicula'].browse([1])
+          pelicula.unlink()
