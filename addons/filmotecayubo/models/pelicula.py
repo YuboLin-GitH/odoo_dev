@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+import datetime
 from odoo import models, fields, api
 
 
@@ -51,3 +52,18 @@ class pelicula(models.Model):
     
     def toggle_color(self):
          self.is_spanish = not self.is_spanish
+
+
+    def f_create(self):
+               pelicula = {
+               "name": "Prueba ORM",
+               "color": "cl",
+               "genero_id": 2,
+               "start_date": str(datetime.date(2022,8,8))
+               } 
+               print(pelicula)
+               self.env['filmotecayubo.pelicula'].create(pelicula)
+     
+    def f_search_update(self):
+          pelicula = self.env['filmotecayubo.pelicula'].search([('name', '=', 'asdas')])
+          print('search()', pelicula, pelicula.name)

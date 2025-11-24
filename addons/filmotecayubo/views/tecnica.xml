@@ -61,21 +61,6 @@
               action="accion_filmotecayubo_tecnica_form"/>
 
 
-    <!-- Top menu item -->
-<!--
-    <menuitem name="filmotecayubo" id="filmotecayubo.menu_root"/>
--->
-    <!-- menu categories -->
-<!--
-    <menuitem name="Menu 1" id="filmotecayubo.menu_1" parent="filmotecayubo.menu_root"/>
-    <menuitem name="Menu 2" id="filmotecayubo.menu_2" parent="filmotecayubo.menu_root"/>
--->
-    <!-- actions -->
-<!--
-    <menuitem name="List" id="filmotecayubo.menu_1_list" parent="filmotecayubo.menu_1"
-              action="filmotecayubo.action_window"/>
-    <menuitem name="Server to list" id="filmotecayubo" parent="filmotecayubo.menu_2"
-              action="filmotecayubo.action_server"/>
--->
+
   </data>
 </odoo>

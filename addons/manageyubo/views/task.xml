@@ -1,0 +1,80 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="vista_manageyubo_task_tree">
+      <field name="name">vista_manageyubo_task_tree</field>
+      <field name="model">manageyubo.task</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="description"/>
+          <field name="start_date"/>
+          <field name="end_date"/>
+          <field name="is_paused"/>
+        </tree>
+      </field>
+    </record>
+
+
+
+    <record model="ir.ui.view" id="vista_manageyubo_task_form">
+      <field name="name">vista_manageyubo_task_form</field>
+      <field name="model">manageyubo.task</field>
+      <field name="arch" type="xml">
+        <form string="formulario_task">
+          <sheet>
+            <group name="group_top">
+                <field name="name"/>
+                <field name="description"/>
+                <field name="start_date"/>
+                <field name="end_date"/>
+                <field name="is_paused"/>
+                <field name="history_id"/>
+                <field name="sprint_id"/>
+                <field name="technology_id"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    
+
+
+<record model="ir.actions.act_window" id="accion_manageyubo_task_form">
+      <field name="name">Listado de Tarea</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">manageyubo.task</field>
+      <field name="view_mode">tree,form</field>
+      <field name="help" type="html">
+        <p class="oe_view_nocontent_create">
+          Tarea
+        </p>
+        <p> Click <strong> 'Crear' </strong> para añadir nuevos elementos
+         </p>
+      </field>
+</record>
+
+
+
+
+
+
+    <!-- Menú raiz -->
+
+    <menuitem name="manageyubo" id="menu_manageyubo_raiz"/>
+
+    <!-- menu categories -->
+
+    <menuitem name="Management" id="menu_manageyubo_management" parent="menu_manageyubo_raiz"/>
+ 
+
+    <!-- actions -->
+
+    <menuitem name="Task" id="menu_manageyubo_task" parent="menu_manageyubo_management"
+              action="accion_manageyubo_task_form"/>
+   
+
+  </data>
+</odoo>
