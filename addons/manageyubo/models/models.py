@@ -7,6 +7,7 @@ class task(models.Model):
     _name = 'manageyubo.task'
     _description = 'manageyubo.task'
 
+    code = fields.Char(string="Código", compute = "_get_code", store=True)
     name = fields.Char(string="Nombre")
     description = fields.Char()
     start_date = fields.Datetime()
@@ -15,7 +16,7 @@ class task(models.Model):
 
     history_id=fields.Many2one("manageyubo.history", string="Historia", required=True, ondelete="cascade")
 
-    sprint_id=fields.Many2one("manageyubo.sprint", string="Sprint", required=True, ondelete="cascade")
+    sprint_id=fields.Many2one("manageyubo.sprint",compute= "_get_sprint", string="Sprint", store=True)
 
     technology_id = fields.Many2many(
         comodel_name="manageyubo.technology",
@@ -23,6 +24,27 @@ class task(models.Model):
         column1="task_id",
         column2="technology_id",  
         string = "Tecnologia")
+
+    @api.depends('code')
+    def _get_sprint(self):
+        for task in self:
+            sprints = self.env['manageyubo.sprint'].search([('project_id', '=', task.history_id.project_id.id)])
+            found = False
+            for sprint in sprints:
+                if isinstance(sprint.end_date, datetime.datetime) and sprint.end_date > datetime.datetime.now():
+                    task.sprint_id = sprint.id
+                    found = True
+                    break
+                if not found:
+                    task.sprint_id = False
+    
+    @api.depends('history_id')
+    def _get_code(self):
+        for task in self:
+            if not task.history_id:
+                task.code = "TSK_" + str(task.id)
+            else:
+                task.code = str(task.history_id.name).upper() + "_" + str(task.id)
 
 class project(models.Model):
     _name = 'manageyubo.project'
