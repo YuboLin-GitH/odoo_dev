@@ -34,6 +34,8 @@
                 <field name="history_id"/>
                 <field name="sprint_id"/>
                 <field name="technology_id"/>
+                <field name="project_id"/>
+                <field name="definition_date"/>
             </group>
           </sheet>
         </form>

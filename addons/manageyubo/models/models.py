@@ -24,6 +24,16 @@ class task(models.Model):
         column1="task_id",
         column2="technology_id",  
         string = "Tecnologia")
+    
+    project_id = fields.Many2one(
+    'manageyubo.project',
+    string="Proyecto",
+    related='history_id.project_id',
+    readonly=True
+    )
+    
+    definition_date = fields.Datetime(default=lambda p: datetime.datetime.now())
+
 
     @api.depends('code')
     def _get_sprint(self):
@@ -35,8 +45,8 @@ class task(models.Model):
                     task.sprint_id = sprint.id
                     found = True
                     break
-                if not found:
-                    task.sprint_id = False
+            if not found:
+                task.sprint_id = False
     
     @api.depends('history_id')
     def _get_code(self):
@@ -64,7 +74,7 @@ class sprint(models.Model):
     name = fields.Char()
     description = fields.Char()
 
-    duration = fields.Integer()
+    duration = fields.Integer(default=15)
 
     start_date = fields.Datetime()
     end_date = fields.Datetime(compute="_get_end_date", store=True)
@@ -73,6 +83,7 @@ class sprint(models.Model):
 
     task_id=fields.One2many("manageyubo.task", inverse_name="sprint_id", string="Tareas")
 
+    
     @api.depends('start_date', 'duration')
     def _get_end_date(self):
         for sprint in self:
@@ -93,6 +104,18 @@ class history(models.Model):
 
     task_id=fields.One2many("manageyubo.task", inverse_name="history_id", string="Tareas")
 
+    used_technologies = fields.Many2many("manageyubo.technology", compute="_get_used_technologies")
+
+    def _get_used_technologies(self):
+        Technology = self.env['manageyubo.technology']
+        for history in self:
+            technologies = Technology
+            for task in history.task_id:
+                if not technologies:
+                    technologies = task.technology_id
+                else:
+                    technologies = technologies + task.technology_id
+            history.used_technologies = technologies
    
 class technology(models.Model):
     _name = 'manageyubo.technology'
