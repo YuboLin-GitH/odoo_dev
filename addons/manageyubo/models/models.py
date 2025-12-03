@@ -134,4 +134,14 @@ class technology(models.Model):
     
 
 
-   
+class developer(models.Model):
+    _inherit = 'res.partner'
+
+   # is_dev = fields.Boolean(string="Es developer", default=False)
+    technologies = fields.Many2many(
+        'manageyubo.technology',
+        relation='developer_technology',
+        column1='partner_id',
+        column2='technology_id',
+        string='Technologies',
+    )
