@@ -73,3 +73,17 @@ class technology(models.Model):
         column1="technology_id",
         column2="task_id",
         string = "Tareas")
+    
+
+class developer(models.Model):
+    _inherit = 'res.partner'
+
+    is_dev = fields.Boolean(string="Es developer", default=False)
+
+    technologies = fields.Many2many(
+        comodel_name='manageyubo.technology',
+        relation='developer_technology',
+        column1='partner_id',
+        column2='technology_id',
+        string='Technologies',
+    )

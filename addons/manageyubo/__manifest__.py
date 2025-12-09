@@ -28,6 +28,7 @@ Long description of module's purpose
         'views/project.xml',
         'views/sprint.xml',
         'views/technology.xml',
+        'views/developer.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
