@@ -25,6 +25,7 @@
         <form string="formulario_task">
           <sheet>
             <group name="group_top">
+                <field name="code"/>
                 <field name="name"/>
                 <field name="description"/>
                 <field name="start_date"/>
@@ -33,6 +34,8 @@
                 <field name="history_id"/>
                 <field name="sprint_id"/>
                 <field name="technology_id"/>
+                <field name="project_id"/>
+                <field name="definition_date"/>
             </group>
           </sheet>
         </form>

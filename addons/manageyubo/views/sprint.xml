@@ -26,11 +26,11 @@
             <group name="group_top">
                 <field name="name"/>
                 <field name="description"/>
+                <field name="duration"/>
                 <field name="start_date"/>
                 <field name="end_date"/>
                 <field name="project_id"/>
                 <field name="task_id"/>
-
             </group>
           </sheet>
         </form>

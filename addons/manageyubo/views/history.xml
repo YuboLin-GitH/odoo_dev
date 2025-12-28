@@ -26,6 +26,7 @@
                 <field name="description"/>
                 <field name="project_id"/>
                 <field name="task_id"/>
+                <field name="used_technologies"/>
             </group>
           </sheet>
         </form>
