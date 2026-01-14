@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_library_yubo_book,library_yubo_book,model_library_yubo_book,base.group_user,1,1,1,1
+access_library_yubo_author,library_yubo_author,model_library_yubo_author,base.group_user,1,1,1,1
+access_library_yubo_genre,library_yubo_genre,model_library_yubo_genre,base.group_user,1,1,1,1
+access_library_yubo_loan,library_yubo_loan,model_library_yubo_loan,base.group_user,1,1,1,1

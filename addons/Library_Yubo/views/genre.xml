@@ -1,0 +1,36 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="view_library_yubo_genre_tree">
+        <field name="name">library.yubo.genre.tree</field>
+        <field name="model">library_yubo.genre</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_library_yubo_genre_form">
+        <field name="name">library.yubo.genre.form</field>
+        <field name="model">library_yubo.genre</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+        <record model="ir.actions.act_window" id="action_library_yubo_genre">
+            <field name="name">Géneros</field>
+            <field name="res_model">library_yubo.genre</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem name="Géneros" id="menu_library_yubo_genre" 
+                  parent="menu_library_yubo_management" 
+                  action="action_library_yubo_genre" sequence="40"/>
+    </data>
+</odoo>

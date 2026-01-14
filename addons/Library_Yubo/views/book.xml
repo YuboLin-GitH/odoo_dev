@@ -1,0 +1,97 @@
+<odoo>
+    <data>
+        <!-- explicit list view definition -->
+
+        <record model="ir.ui.view" id="vista_library_yubo_book_tree">
+            <field name="name">vista_library_yubo_book_tree</field>
+            <field name="model">library_yubo.book</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name" />
+                    <field name="author_id" />
+                    <field name="state" />
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="vista_library_yubo_book_kanban">
+            <field name="name">vista_library_yubo_book_kanban</field>
+            <field name="model">library_yubo.book</field>
+            <field name="arch" type="xml">
+                <kanban class="o_kanban_mobile">
+                    <field name="name" />
+                    <field name="author_id" />
+                    <field name="state" />
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="oe_kanban_global_click shadow-sm border-primary">
+                                <div class="o_kanban_details">
+                                    <strong class="o_kanban_record_title" style="font-size: 16px;">
+                                        <field name="name" />
+                                    </strong>
+                                    <div class="text-muted"> Autor: <field name="author_id" />
+                                    </div>
+                                    <div class="mt-2">
+                                        <span
+                                            t-attf-class="badge #{record.state.raw_value == 'available' ? 'bg-success' : 'bg-warning'} text-white">
+                                            <field name="state" />
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="vista_library_yubo_book_form">
+            <field name="name">vista_library_yubo_book_form</field>
+            <field name="model">library_yubo.book</field>
+            <field name="arch" type="xml">
+                <form string="formulario_book">
+                    <sheet>
+                        <group name="group_top">
+                            <field name="name" />
+                            <field name="state" />
+                            <field name="author_id" />
+                            <field name="genre_ids" />
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <record model="ir.actions.act_window" id="accion_library_yubo_book_form">
+            <field name="name">Listado de Libro</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">library_yubo.book</field>
+            <field name="view_mode">tree,form,kanban</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Libro
+                </p>
+                <p> Click <strong> 'Crear' </strong> para añadir nuevos elementos </p>
+            </field>
+        </record>
+
+
+        <!-- Menú raiz -->
+
+        <menuitem name="library_yubo" id="menu_library_yubo_raiz" />
+
+        <!-- menu categories -->
+
+        <menuitem name="Management" id="menu_library_yubo_management"
+            parent="menu_library_yubo_raiz" />
+
+
+        <!-- actions -->
+
+        <menuitem name="Libro" id="menu_library_yubo_book" parent="menu_library_yubo_management"
+            action="accion_library_yubo_book_form" />
+
+
+    </data>
+</odoo>

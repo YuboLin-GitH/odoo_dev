@@ -1,0 +1,35 @@
+<odoo>
+    <data>
+        <record id="view_partner_tree_library_inherit" model="ir.ui.view">
+            <field name="name">res.partner.tree.library.inherit</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='display_name']" position="after">
+                    <field name="member_number" optional="show"/>
+                </xpath>
+            </field>
+        </record>
+        <record id="view_partner_form_library_inherit" model="ir.ui.view">
+            <field name="name">res.partner.form.library.inherit</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='phone']" position="after">
+                    <label for="member_number" string="Número de Socio" />
+                    <field name="member_number" placeholder="Ej. SOCIO-001"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_library_yubo_member">
+            <field name="name">Socios</field>
+            <field name="res_model">res.partner</field>
+            <field name="view_mode">tree,form</field>
+            </record>
+
+        <menuitem name="Socios" id="menu_library_yubo_member" 
+                  parent="menu_library_yubo_management" 
+                  action="action_library_yubo_member" sequence="50"/>
+    </data>
+</odoo>

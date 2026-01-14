@@ -1,0 +1,60 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+<!--
+    <record model="ir.ui.view" id="library_yubo.list">
+      <field name="name">library_yubo list</field>
+      <field name="model">library_yubo.library_yubo</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="value"/>
+          <field name="value2"/>
+        </tree>
+      </field>
+    </record>
+-->
+
+    <!-- actions opening views on models -->
+<!--
+    <record model="ir.actions.act_window" id="library_yubo.action_window">
+      <field name="name">library_yubo window</field>
+      <field name="res_model">library_yubo.library_yubo</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+-->
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="library_yubo.action_server">
+      <field name="name">library_yubo server</field>
+      <field name="model_id" ref="model_library_yubo_library_yubo"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+<!--
+    <menuitem name="library_yubo" id="library_yubo.menu_root"/>
+-->
+    <!-- menu categories -->
+<!--
+    <menuitem name="Menu 1" id="library_yubo.menu_1" parent="library_yubo.menu_root"/>
+    <menuitem name="Menu 2" id="library_yubo.menu_2" parent="library_yubo.menu_root"/>
+-->
+    <!-- actions -->
+<!--
+    <menuitem name="List" id="library_yubo.menu_1_list" parent="library_yubo.menu_1"
+              action="library_yubo.action_window"/>
+    <menuitem name="Server to list" id="library_yubo" parent="library_yubo.menu_2"
+              action="library_yubo.action_server"/>
+-->
+  </data>
+</odoo>

@@ -7,7 +7,7 @@ class task(models.Model):
     _name = 'manageyubo.task'
     _description = 'manageyubo.task'
 
-    code = fields.Char(string="Código", compute = "_get_code", store=True)
+    code = fields.Char(string="Código", compute = "_get_code")
     name = fields.Char(string="Nombre")
     description = fields.Char()
     start_date = fields.Datetime()
@@ -48,13 +48,10 @@ class task(models.Model):
             if not found:
                 task.sprint_id = False
     
-    @api.depends('history_id')
+    
     def _get_code(self):
         for task in self:
-            if not task.history_id:
                 task.code = "TSK_" + str(task.id)
-            else:
-                task.code = str(task.history_id.name).upper() + "_" + str(task.id)
 
 class project(models.Model):
     _name = 'manageyubo.project'
